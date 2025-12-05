@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d58550a9-18de-408b-b566-9765c672b88a" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book/frontend/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/book/frontend/layout.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/book/frontend/mainpage/page.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/book/frontend/userpage/create/page.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/book/frontend/userpage/view/page.js" beforeDir="false" />
-    </list>
+    <list default="true" id="d58550a9-18de-408b-b566-9765c672b88a" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +62,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1764893649557</updated>
-      <workItem from="1764893650853" duration="10536000" />
+      <workItem from="1764893650853" duration="10765000" />
     </task>
     <servers />
   </component>
