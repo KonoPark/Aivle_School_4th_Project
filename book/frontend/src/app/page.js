@@ -13,17 +13,28 @@ export default function MainPage() {
     useEffect(() => {
         fetch("http://localhost:8080/book/list")
             .then((res) => res.json())
-            .then((data) => {
-                console.log("📘 불러온 데이터:", data);
+            .then((result) => {
+                console.log("📘 불러온 데이터:", result);
+
+                // ApiResponse 형태: { status, data, message }
+                const list = Array.isArray(result) ? result : result.data;
+
+                if (!Array.isArray(list) || list.length === 0) {
+                    setBooks([]);
+                    return;
+                }
 
                 // 최신 등록순 정렬
-                const sorted = data.sort(
+                const sorted = [...list].sort(
                     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
                 );
 
                 setBooks(sorted);
             })
-            .catch((err) => console.error("도서 불러오기 오류:", err));
+            .catch((err) => {
+                console.error("도서 불러오기 오류:", err);
+                setBooks([]);
+            });
     }, []);
 
     // ---- 2) 페이지별 아이템 자르기 ----
