@@ -32,7 +32,7 @@ public class BookInfo {
     @Column
     private String author;
 
-    @Column
+    @Column(name = "cover_image_url", length = 2000)
     private String coverImageUrl;
 
     @Column(nullable = false)
