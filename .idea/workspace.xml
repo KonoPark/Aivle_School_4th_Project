@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="af648b98-a25d-483f-b4ae-0c9e9bacbd9f" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/book/frontend/src/app/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/book/frontend/src/app/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book/frontend/src/app/mainpage/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/book/frontend/src/app/mainpage/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book/frontend/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/book/frontend/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book/frontend/src/app/userpage/create/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/book/frontend/src/app/userpage/create/page.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "JIHYUN",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>

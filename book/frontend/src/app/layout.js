@@ -10,6 +10,10 @@ import "@fontsource/gowun-dodum";
 const theme = createTheme({
     typography: {
         fontFamily: "Gowun Dodum, sans-serif",
+        h4: {
+            fontFamily: "Nanum Gothic, sans-serif",
+            fontWeight: 700,
+        },
         h6: {
             fontFamily: "Nanum Gothic, sans-serif",
             fontWeight: 700,
