@@ -7,12 +7,14 @@ export default function CreateWork() {
 
     // 페이지 진입 시 로그인 체크
     useEffect(() => {
-        const token = sessionStorage.getItem("token");
-        if (!token) {
-            alert("로그인 후 이용 가능합니다."); //alert 두번 뜨는 문제가 있으나 작동은 정상 작동 하는 듯
+        const user = localStorage.getItem("user");
+
+        if (!user) {
+            alert("로그인 후 이용 가능합니다.");
             window.location.href = "/login";
         }
     }, []);
+
 
     const [form, setForm] = useState({
         title: "",
