@@ -3,8 +3,11 @@ package com.aivle0102.book.controller;
 import com.aivle0102.book.domain.BookInfo;
 import com.aivle0102.book.service.BookInfoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -28,16 +31,16 @@ public class BookInfoController {
     }
 
     // 3. 도서 등록
-    @PostMapping("/insert")
-    public BookInfo insertBook(@RequestBody BookInfo book) {
-        BookInfo saved = bookInfoService.insertBook(book);
+    @PostMapping(value = "/insert", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public BookInfo insertBook(@RequestPart("book") BookInfo book, @RequestPart(value = "file", required = false) MultipartFile file, @RequestParam Long userId) throws IOException {
+        BookInfo saved = bookInfoService.insertBook(book, userId, file);
         return saved;
     }
 
     // 4. 도서 수정
-    @PutMapping("/update/{bookId}")
-    public BookInfo updateBook(@PathVariable long bookId, @RequestBody BookInfo bookInfo){
-        return bookInfoService.updateBook(bookId, bookInfo);
+    @PutMapping(value = "/update/{bookId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public BookInfo updateBook(@PathVariable long bookId, @RequestPart("book") BookInfo bookInfo, @RequestPart(value = "file", required = false) MultipartFile file, @RequestParam Long userId) throws IOException {
+        return bookInfoService.updateBook(bookId, bookInfo, userId, file);
     }
 
     // 5. 도서 삭제

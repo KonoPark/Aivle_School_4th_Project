@@ -1,7 +1,9 @@
 package com.aivle0102.book.service;
 
 import com.aivle0102.book.domain.BookInfo;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface BookInfoService {
@@ -13,10 +15,10 @@ public interface BookInfoService {
     BookInfo getBookDetail(Long id);
 
     // 3) 도서 등록 (/book/insert)
-    BookInfo insertBook(BookInfo book);
+    BookInfo insertBook(BookInfo book, Long userId, MultipartFile file) throws IOException;
 
     // 4) 도서 수정 (/book/update/{id})
-    BookInfo updateBook(Long id, BookInfo book);
+    BookInfo updateBook(Long id, BookInfo book, Long userId, MultipartFile file) throws IOException;
 
     // 5) 도서 삭제 (/book/delete/{id})
     void deleteBook(Long id);
