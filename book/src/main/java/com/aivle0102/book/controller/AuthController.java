@@ -53,4 +53,16 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
         }
     }
+
+    // 로그인
+    private final LoginService loginService;
+
+    @PostMapping("/login")
+    public ResponseEntity<?> LoginForm_Page(@RequestBody UserInfo user, HttpSession session) throws Exception {
+
+        UserInfo loginUser = loginService.getUser(user);
+        session.setAttribute("user", loginUser.getUserId());
+
+        return ResponseEntity.ok("로그인 성공");
+    }
 }
