@@ -44,8 +44,7 @@ export default function MyPageView() {
         }
 
         try {
-            // 1. 백엔드에 삭제 요청 (현재는 DB가 없으므로 주석 처리)
-            /*
+            // 1. 백엔드에 삭제 요청 
             const response = await fetch(`/book/delete/${idToDelete}`, {
                 method: 'DELETE',
             });
@@ -54,7 +53,6 @@ export default function MyPageView() {
                 // 실제 백엔드 연동 시, 여기서 에러 처리를 해야 합니다.
                 throw new Error('작품 삭제에 실패했습니다.');
             }
-            */
 
             // 2. 백엔드 요청 성공 시, 프론트엔드 상태 업데이트
             setWorks(currentWorks => currentWorks.filter(work => work.id !== idToDelete));
@@ -66,7 +64,6 @@ export default function MyPageView() {
         }
     };
 
-    // --- 모달 관련 함수 추가 ---
 
     // 수정 버튼 클릭 시 모달 열기
     const handleOpenEditModal = (work) => {
@@ -92,15 +89,12 @@ export default function MyPageView() {
 
         try {
             // 1. 백엔드에 수정 요청 (PUT /book/update/{bookId})
-            // 현재는 DB가 없으므로 주석 처리
-            /*
             const response = await fetch(`/book/update/${editingWork.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(editingWork),
             });
             if (!response.ok) throw new Error('작품 수정에 실패했습니다.');
-            */
             
             // 2. 프론트엔드 상태 업데이트
             setWorks(currentWorks => 
