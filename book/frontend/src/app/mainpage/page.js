@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Box, Typography, Stack, CardMedia, Pagination } from "@mui/material";
 
-// 🔹 백엔드 응답이 없을 때 fallback 데이터
+// 백엔드 응답이 없을 때 fallback 데이터
 const mockData = [
     {
         id: 1,
@@ -35,42 +35,55 @@ export default function MainPage() {
     const itemsPerPage = 4; // 한 페이지당 4개
 
     // --------------------------------
-    // 🟦 1) 백엔드에서 데이터 가져오기
+    // 1) 백엔드에서 데이터 가져오기
     // --------------------------------
     useEffect(() => {
         fetch("http://localhost:8080/book/list")
             .then((res) => res.json())
-            .then((data) => {
-                console.log("📘 불러온 데이터:", data);
+            .then((result) => {
+            console.log("불러온 원본 응답:", result);
 
-                if (!data || data.length === 0) {
-                    // 데이터가 없으면 mockData 사용
-                    setBooks(mockData);
-                    return;
-                }
+            // 1) 우리가 기대하는 형태: { status: "success", data: [...] }
+            let data = null;
+            if (result && Array.isArray(result)) {
+                // 혹시나 배열 그대로 오는 경우
+                data = result;
+            } else if (result && Array.isArray(result.data)) {
+                // ApiResponse<T> 형태인 경우
+                data = result.data;
+            } else {
+                console.error("❗ 예상치 못한 응답 형식:", result);
+            }
 
-                const sorted = data.sort(
-                    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-                );
+            // 2) data가 배열이 아닌 경우 -> mockData로 대체
+            if (!data || !Array.isArray(data) || data.length === 0) {
+                setBooks(mockData);
+                return;
+            }
 
-                // 🔹 백엔드 데이터 형태 통일 (mockData 스타일로 매핑)
-                const converted = sorted.map((item) => ({
-                    id: item.bookId,
-                    title: item.title,
-                    description: item.content,
-                    image: item.coverImageUrl,
-                }));
+            // 3) 최신 등록순 정렬
+            const sorted = [...data].sort(
+                (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+            );
 
-                setBooks(converted);
-            })
+            // 4) 프론트에서 사용하는 형태로 매핑
+            const converted = sorted.map((item) => ({
+                id: item.bookId,
+                title: item.title,
+                description: item.content,
+                image: item.coverImageUrl,
+            }));
+
+            setBooks(converted);
+        })
             .catch((err) => {
                 console.error("도서 불러오기 오류:", err);
-                setBooks(mockData); // 오류 발생 시 mockData 보여줌
+                setBooks(mockData);
             });
     }, []);
 
     // --------------------------------
-    // 🟦 2) 페이지네이션 처리
+    // 2) 페이지네이션 처리
     // --------------------------------
     const startIndex = (page - 1) * itemsPerPage;
     const currentItems = books.slice(startIndex, startIndex + itemsPerPage);
@@ -83,7 +96,7 @@ export default function MainPage() {
             </Typography>
 
             {/* -------------------------------- */}
-            {/* 🟦 3) 작품 리스트 (디자인 mock 버전 유지) */}
+            {/* 3) 작품 리스트 (디자인 mock 버전 유지) */}
             {/* -------------------------------- */}
             <Stack spacing={4} sx={{ px: 2 }}>
                 {currentItems.map((item) => (
@@ -159,7 +172,7 @@ export default function MainPage() {
             </Stack>
 
             {/* -------------------------------- */}
-            {/* 🟦 4) 페이지네이션 */}
+            {/* 4) 페이지네이션 */}
             {/* -------------------------------- */}
             <Stack alignItems="center" sx={{ mt: 4 }}>
                 <Pagination

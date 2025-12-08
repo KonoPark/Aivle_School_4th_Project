@@ -54,22 +54,34 @@ export default function MyPageView() {
 
     // --- 작품 목록 불러오기 (GET /book/list) ---
     useEffect(() => {
-        const isLoggedIn = false; // 현재 테스트이므로, True로 변경, 실행 시 False로 변경 
+        // const isLoggedIn = false; // 현재 테스트이므로, True로 변경, 실행 시 False로 변경
+        const user = typeof window !== "undefined" ? localStorage.getItem("user") : null;
+        const isLoggedIn = !!user;
 
+        // if (!isLoggedIn) {
+        //     if (!alertShown.current) {
+        //         alert("로그인이 필요한 서비스입니다.");
+        //         alertShown.current = true;
+        //     }
+        //     router.push('/login');
+        //     return; // 이후 코드(작품 목록 조회) 실행 중단
+        // }
         if (!isLoggedIn) {
+            // 여기서는 굳이 alert 안 띄우고 조용히 보내도 됨 (AppBar에서 이미 안내했으니까)
             if (!alertShown.current) {
+                // 필요하면 한 번만 안내
                 alert("로그인이 필요한 서비스입니다.");
                 alertShown.current = true;
             }
-            router.push('/login');
-            return; // 이후 코드(작품 목록 조회) 실행 중단
+            router.replace("/login");   // 뒤로가기 눌러도 안 돌아오도록 replace
+            return;
         }
         // --- 로그인 확인 끝 ---
 
         const fetchWorks = async () => {
             setLoading(true);
             try {
-                const response = await fetch('/api/book/list', {
+                const response = await fetch('http://localhost:8080/book/list', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -104,7 +116,7 @@ export default function MyPageView() {
                     throw new Error(result.message || '작품 목록 조회 실패');
                 }
             } catch (error) {
-                console.error("작품 목록 불러오기 오류:", error);
+                console.error("작품 목록 불러오기 오류:", error.message);
                 if (!alertShown.current) {
                     alert('작품 목록을 불러오지 못했습니다. 목업 데이터를 표시합니다.');
                     alertShown.current = true;
