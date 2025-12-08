@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="624be917-ee9b-4049-a432-9a770f836585" name="변경" comment="login/signup comp" />
+    <list default="true" id="e31bcf78-0dcc-4cb9-ae6f-a1a78c686b84" name="변경" comment="fin">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,11 +20,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -40,12 +37,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="GINA2" />
-                    <option name="lastUsedInstant" value="1765159775" />
+                    <option name="branchName" value="GINA_up" />
+                    <option name="lastUsedInstant" value="1765181411" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1765159627" />
+                    <option name="branchName" value="GINA_up_save" />
+                    <option name="lastUsedInstant" value="1765181396" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="GINA_up_edit" />
+                    <option name="lastUsedInstant" value="1765181111" />
                   </RecentBranch>
                 </list>
               </option>
@@ -63,9 +64,9 @@
   }
 }</component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
+  &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="36XeKeiWyOrsnNWGaL8JD4Ug3X2" />
+  <component name="ProjectId" id="36YEnFTjDyzMnx92t1jvMajbZTt" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -76,11 +77,8 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;GINA2&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;GINA__up&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/GINA/WebstormProjects/Aivle_School_4th_Project&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -98,38 +96,38 @@
     </attachedChunks>
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="624be917-ee9b-4049-a432-9a770f836585" name="변경" comment="Merge branch 'merge_pb_up'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-      <created>1765157281354</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1765157281354</updated>
-      <workItem from="1765157283317" duration="120000" />
-      <workItem from="1765157408297" duration="9854000" />
-    </task>
-    <task id="LOCAL-00001" summary="Merge branch 'merge_pb_up'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+    <task id="LOCAL-00001" summary="check jihyun">
       <option name="closed" value="true" />
-      <created>1765157445535</created>
+      <created>1765174210757</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1765157445535</updated>
+      <updated>1765174210757</updated>
     </task>
-    <task id="LOCAL-00002" summary="config update">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="e31bcf78-0dcc-4cb9-ae6f-a1a78c686b84" name="변경" comment="Merge branch 'gyeonghun_up' into GINA_up&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;book/frontend/src/app/mainpage/page.js" />
+      <created>1765175271267</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1765175271267</updated>
+      <workItem from="1765175272811" duration="2000" />
+      <workItem from="1765175349118" duration="4833000" />
+    </task>
+    <task id="LOCAL-00002" summary="help">
       <option name="closed" value="true" />
-      <created>1765159721168</created>
+      <created>1765177618655</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1765159721168</updated>
+      <updated>1765177618655</updated>
     </task>
-    <task id="LOCAL-00003" summary="login/signup comp">
+    <task id="LOCAL-00003" summary="help1">
       <option name="closed" value="true" />
-      <created>1765169416943</created>
+      <created>1765178135485</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1765169416943</updated>
+      <updated>1765178135485</updated>
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
@@ -138,10 +136,11 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge branch 'merge_pb_up'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <MESSAGE value="config update" />
-    <MESSAGE value="login/signup comp" />
-    <option name="LAST_COMMIT_MESSAGE" value="login/signup comp" />
+    <MESSAGE value="check jihyun" />
+    <MESSAGE value="help" />
+    <MESSAGE value="help1" />
+    <MESSAGE value="error" />
+    <option name="LAST_COMMIT_MESSAGE" value="error" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
