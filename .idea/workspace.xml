@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e31bcf78-0dcc-4cb9-ae6f-a1a78c686b84" name="변경" comment="Merge branch 'JIHYUN_up' into GINA_up&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;book/src/main/java/com/aivle0102/book/config/WebConfig.java">
+    <list default="true" id="e31bcf78-0dcc-4cb9-ae6f-a1a78c686b84" name="변경" comment="check jihyun">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,13 +15,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "GINA__up",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;git-widget-placeholder&quot;: &quot;GINA__up&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="check jihyun">
+      <option name="closed" value="true" />
+      <created>1765174210757</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765174210757</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="check jihyun" />
+    <option name="LAST_COMMIT_MESSAGE" value="check jihyun" />
   </component>
 </project>
