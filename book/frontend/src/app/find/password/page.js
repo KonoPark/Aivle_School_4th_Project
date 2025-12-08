@@ -88,7 +88,7 @@ export default function FindPasswordPage() {
                         <label style={styles.label}>전화번호</label>
                         <input
                             type="text"
-                            placeholder="예: 010-1234-5678"
+                            placeholder="예: 01012345678"
                             style={styles.input}
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
