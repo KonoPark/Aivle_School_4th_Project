@@ -17,9 +17,9 @@ import {
 
 export default function CreateWork() {
 
-    /* ------------------------------
-        🧩 로그인 체크
-    ------------------------------ */
+    /* --------------------------
+       🧩 로그인 체크
+    --------------------------- */
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (!user || !user.userId) {
@@ -28,9 +28,9 @@ export default function CreateWork() {
         }
     }, []);
 
-    /* ------------------------------
-        🧩 상태값 관리
-    ------------------------------ */
+    /* --------------------------
+       🧩 상태 변수
+    --------------------------- */
     const [form, setForm] = useState({
         title: "",
         author: "",
@@ -39,10 +39,13 @@ export default function CreateWork() {
     });
 
     const [userApiKey, setUserApiKey] = useState("");
-    const [model, setModel] = useState("dall-e-3");
+    const [model, setModel] = useState("dall-e");
     const [imageUrl, setImageUrl] = useState(null);
     const [isGeneratingCover, setIsGeneratingCover] = useState(false);
 
+    /* --------------------------
+       🧩 입력 form 변경
+    --------------------------- */
     const handleFormChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
@@ -52,8 +55,8 @@ export default function CreateWork() {
     };
 
     /* ============================================================
-        ⭐ 표지 이미지 생성
-        (React → Next.js API Route → OpenAI)
+       ⭐ 1) 표지 이미지 생성
+          (React → Next.js API Route → OpenAI → imageURL 수신)
     ============================================================ */
     const handleGenerateCover = async () => {
         if (!userApiKey) {
@@ -69,11 +72,11 @@ export default function CreateWork() {
 
         try {
             const prompt = `
-            '${form.category}' 장르의 동화책 표지를 그려줘.
-            제목: ${form.title}
-            작가: ${form.author}
-            내용 설명: ${form.content}
-            따뜻하고 밝은 분위기의 일러스트 스타일로.
+                '${form.category}' 장르의 동화책 표지를 그려줘.
+                제목: ${form.title}
+                작가: ${form.author}
+                내용 설명: ${form.content}
+                따뜻하고 밝은 분위기의 일러스트 스타일로.
             `;
 
             const response = await fetch("/api/generateCover", {
@@ -106,78 +109,46 @@ export default function CreateWork() {
     };
 
     /* ============================================================
-        ⭐ 작품 등록
-        (React → Spring Boot multipart/form-data)
-        ※ 파일 없이 이미지 URL만 전송!
+       ⭐ 2) 작품 등록
+          (React → Spring insertByUrl, 이미지 URL만 전달)
     ============================================================ */
     const handleSubmit = async () => {
         const userData = JSON.parse(localStorage.getItem("user"));
-        if (!userData?.userId) {
-            alert("로그인 정보가 유효하지 않습니다.");
-            window.location.href = "/login";
+
+        const bookData = {
+            title: form.title,
+            author: form.author,
+            category: form.category,
+            content: form.content,
+            coverImageUrl: imageUrl, // URL만 보내면 됨!
+        };
+
+        const response = await fetch(`http://localhost:8080/book/insertByUrl?userId=${userData.userId}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(bookData),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("등록 실패:", errorText);
+            alert("등록 실패: 백엔드 로그 확인 필요");
             return;
         }
 
-        if (!form.title || !form.content) {
-            alert("필수 항목을 입력해주세요.");
-            return;
-        }
-
-        try {
-            const formData = new FormData();
-
-            // JSON을 Blob으로 감싸서 multipart 로 보냄
-            formData.append(
-                "book",
-                new Blob(
-                    [
-                        JSON.stringify({
-                            title: form.title,
-                            author: form.author,
-                            category: form.category,
-                            content: form.content,
-                            coverImageUrl: imageUrl,  // ⭐ AI url 저장
-                        }),
-                    ],
-                    { type: "application/json" }
-                )
-            );
-
-            // 파일은 없음 → null 전송
-            formData.append("file", new Blob([], { type: "application/octet-stream" }));
-
-            // userId 전달
-            formData.append("userId", userData.userId);
-
-            const response = await fetch("http://localhost:8080/book/insert", {
-                method: "POST",
-                body: formData,
-            });
-
-            if (!response.ok) {
-                const err = await response.text();
-                console.error("등록 실패:", err);
-                alert("등록 실패: 서버 로그 확인 필요");
-                return;
-            }
-
-            alert("작품 등록 완료!");
-            window.location.href = "/mainpage";
-
-        } catch (err) {
-            console.error("등록 오류:", err);
-            alert("등록 중 오류가 발생했습니다.");
-        }
+        alert("등록 완료!");
+        window.location.href = "/mainpage";
     };
 
+
     /* ============================================================
-        ⭐ UI 렌더링
+       ⭐ UI 렌더링
     ============================================================ */
     return (
         <Box sx={{ display: "flex", justifyContent: "center", width: "100%", mt: 5 }}>
             <Grid container spacing={4} sx={{ maxWidth: "1200px", px: 2 }}>
 
-                {/* 왼쪽 - 입력 */}
+                {/* 왼쪽: 입력 폼 */}
                 <Grid item xs={12} md={4}>
                     <Typography variant="h4" sx={{ mb: 4, fontWeight: 700 }}>
                         새 작품 등록
@@ -196,7 +167,7 @@ export default function CreateWork() {
                                sx={{ mb: 3 }} value={form.content} onChange={handleFormChange} />
                 </Grid>
 
-                {/* 오른쪽 - 표지 생성 */}
+                {/* 오른쪽: 표지 이미지 생성 */}
                 <Grid item xs={12} md={4}>
                     <Typography variant="h6" sx={{ mb: 3, fontWeight: 700 }}>
                         표지 이미지 생성
@@ -219,7 +190,7 @@ export default function CreateWork() {
                             label="이미지 모델"
                             onChange={handleModelChange}
                         >
-                            <MenuItem value="dall-e-3">DALL·E 3</MenuItem>
+                            <MenuItem value="dall-e">DALL·E 3</MenuItem>
                         </Select>
                     </FormControl>
 
@@ -255,12 +226,7 @@ export default function CreateWork() {
                         </Box>
                     )}
 
-                    <Button
-                        variant="contained"
-                        size="large"
-                        onClick={handleSubmit}
-                        sx={{ mt: 3 }}
-                    >
+                    <Button variant="contained" size="large" onClick={handleSubmit} sx={{ mt: 3 }}>
                         작품 등록하기
                     </Button>
                 </Grid>

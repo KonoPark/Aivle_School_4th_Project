@@ -54,4 +54,14 @@ public class BookInfoController {
     public BookInfo updateCoverUrl(@PathVariable Long bookId, @RequestBody BookInfo book){
         return bookInfoService.updateCoverUrl(bookId, book.getCoverImageUrl());
     }
+
+    @PostMapping("/insertByUrl")
+    public BookInfo insertBookByUrl(
+            @RequestBody BookInfo book,
+            @RequestParam Long userId
+    ) throws IOException {
+        return bookInfoService.insertBookByUrl(book, userId);
+    }
+
+
 }

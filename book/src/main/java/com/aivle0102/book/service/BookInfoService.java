@@ -25,4 +25,7 @@ public interface BookInfoService {
 
     // 6) AI 표지 이미지 URL 저장 (/book/createImg/{id})
     BookInfo updateCoverUrl(Long bookId, String coverImageUrl);
+
+    BookInfo insertBookByUrl(BookInfo book, Long userId) throws IOException;
+
 }

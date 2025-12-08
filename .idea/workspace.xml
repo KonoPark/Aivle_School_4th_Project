@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e31bcf78-0dcc-4cb9-ae6f-a1a78c686b84" name="변경" comment="fin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/book/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book/frontend/src/app/userpage/create/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/book/frontend/src/app/userpage/create/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book/src/main/java/com/aivle0102/book/controller/BookInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book/src/main/java/com/aivle0102/book/controller/BookInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book/src/main/java/com/aivle0102/book/service/BookInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/book/src/main/java/com/aivle0102/book/service/BookInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book/src/main/java/com/aivle0102/book/service/impl/BookInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/book/src/main/java/com/aivle0102/book/service/impl/BookInfoServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,22 +76,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;GINA__up&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "JIHYUN__frontend__edit",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
