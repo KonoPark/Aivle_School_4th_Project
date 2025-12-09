@@ -10,4 +10,7 @@ import java.util.List;
 public interface ImgInfoRepository extends JpaRepository<ImgInfo, Long> {
     List<ImgInfo> findByBook_BookId(Long bookId);
     List<ImgInfo> findByBook_BookIdAndState(Long bookId, String state);
+
+    void deleteByBook_BookId(Long bookId); //삭제 관련 추가
+
 }

@@ -120,11 +120,22 @@ public class BookInfoServiceImpl implements BookInfoService {
 
 
     // 5) 도서 삭제
+    //@Override
+    //@Transactional
+    //public void deleteBook(Long id) {
+    //    bookInfoRepository.deleteById(id);
+    //}
+
+    //삭제 관련 추가
     @Override
-    @Transactional
-    public void deleteBook(Long id) {
-        bookInfoRepository.deleteById(id);
-    }
+        @Transactional
+        public void deleteBook(Long id) {
+            // 1) 자식(이미지) 먼저 삭제
+            imgInfoRepository.deleteByBook_BookId(id);
+
+            // 2) 부모(Book) 삭제
+            bookInfoRepository.deleteById(id);
+        }
 
     // 6) AI 표지 이미지 URL 업데이트
     @Override
