@@ -79,7 +79,7 @@ export default function BookDetailPage() {
                         : "알 수 없음",
                     image:
                          data.coverImageUrl
-                             ? `http://localhost:8080${data.coverImageUrl}`
+                             ? `${data.coverImageUrl}`
                                  : "https://via.placeholder.com/200x300?text=No+Image",
                     // content를 요약/줄거리 둘 다에 재사용
                     summary: data.content || "요약 정보가 없습니다.",
