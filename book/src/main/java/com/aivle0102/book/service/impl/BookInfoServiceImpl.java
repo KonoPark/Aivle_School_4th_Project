@@ -306,6 +306,8 @@ public class BookInfoServiceImpl implements BookInfoService {
         // 이미지
         String imageUrl = doc.select("meta[property=og:image]").attr("content");
 
+        imageUrl = imageUrl.substring(0,imageUrl.length()-2) + "L";
+
         book.setBookId(Long.parseLong(goodsNo));
         book.setTitle(title);
         book.setAuthor(author);
