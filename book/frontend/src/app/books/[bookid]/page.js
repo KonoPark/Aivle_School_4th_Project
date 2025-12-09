@@ -1,15 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import {
     Box,
     Typography,
     CardMedia,
     CircularProgress,
+    Button,
+    Stack,
     Divider,
     Container,
-    Stack,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
+    TextField,
 } from "@mui/material";
 
 export default function BookDetailPage() {
@@ -17,9 +23,15 @@ export default function BookDetailPage() {
     const params = useParams();
     const bookid = params?.bookid; // /books/3 → "3"
 
+    const router = useRouter();
+
     // 2. 상태 관리
     const [book, setBook] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    // 수정 모달용 상태
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editingBook, setEditingBook] = useState(null);
 
     // 3. 백엔드에서 도서 상세 가져오기
     useEffect(() => {
@@ -95,63 +107,54 @@ export default function BookDetailPage() {
         );
     }
 
-    // 6. 메인 UI (읽기 전용 상세 페이지)
-    return (
-        <Container maxWidth="lg" sx={{ mt: 5, mb: 5 }}>
-            {/* 상단 헤더 영역 */}
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    mb: 2,
-                }}
-            >
-                {/* 제목 및 저자 정보 */}
-                <Box>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            alignItems: "baseline",
-                            gap: 2,
-                            mb: 1,
-                        }}
-                    >
-                        <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                            책 제목 : {book.title}
-                        </Typography>
-                    </Box>
-                    <Typography variant="body1" color="text.secondary">
-                        저자 : {book.author} &nbsp;/&nbsp; 등록일 : {book.regDate}
-                    </Typography>
-                </Box>
-            </Box>
+  // 6. 메인 UI (이미지 디자인 반영)
+  return (
+    <Container maxWidth="lg" sx={{ mt: 5, mb: 5 }}>
+      {/* --- 상단 헤더 영역 (제목 + 수정/삭제 버튼) --- */}
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", mb: 2 }}>
+        {/* 제목 및 저자 정보 */}
+        <Box>
+          <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 2, mb: 1 }}>
+            <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+              책 제목 : {book.title}
+            </Typography>
+          </Box>
+          <Typography variant="body1" color="text.secondary">
+            저자 : {book.author} &nbsp;/&nbsp; 등록일 : {book.regDate}
+          </Typography>
+        </Box>
+
+        {/* 수정/삭제 버튼 */}
+        <Stack direction="row" spacing={1}>
+          <Button variant="contained" color="inherit" sx={{ backgroundColor: '#b0a9a9', color: '#fff' }}>
+            수정
+          </Button>
+          <Button variant="contained" color="inherit" sx={{ backgroundColor: '#b0a9a9', color: '#fff' }}>
+            삭제
+          </Button>
+        </Stack>
+      </Box>
 
             <Divider sx={{ mb: 4 }} />
 
-            {/* 본문 영역 */}
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: { xs: "column", md: "row" },
-                    gap: 4,
-                }}
-            >
-                {/* 좌측: 이미지 */}
-                <Box sx={{ flex: "0 0 350px" }}>
-                    <CardMedia
-                        component="img"
-                        image={book.image}
-                        alt={book.title}
-                        sx={{
-                            width: "100%",
-                            height: "auto",
-                            borderRadius: 3,
-                            boxShadow: 3,
-                            backgroundColor: "#f5f5f5",
-                        }}
-                    />
-                </Box>
+      {/* --- 본문 영역 (좌측 이미지 | 우측 텍스트) --- */}
+      <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, gap: 4 }}>
+
+        {/* 좌측: 책 표지 이미지 */}
+        <Box sx={{ flex: "0 0 350px" }}> {/* 너비 고정 */}
+          <CardMedia
+            component="img"
+            image={book.image}
+            alt={book.title}
+            sx={{
+              width: "100%",
+              height: "auto",
+              borderRadius: 3,
+              boxShadow: 3,
+              backgroundColor: "#f5f5f5"
+            }}
+          />
+        </Box>
 
                 {/* 우측: 요약/줄거리 */}
                 <Box sx={{ flex: 1 }}>
@@ -171,23 +174,18 @@ export default function BookDetailPage() {
                             </Typography>
                         </Box>
 
-                        <Box>
-                            <Typography
-                                variant="h6"
-                                sx={{ fontWeight: "bold", mb: 1 }}
-                            >
-                                줄거리
-                            </Typography>
-                            <Typography
-                                variant="body1"
-                                sx={{ lineHeight: 1.8, color: "#333" }}
-                            >
-                                {book.plot}
-                            </Typography>
-                        </Box>
-                    </Stack>
-                </Box>
+            {/* 줄거리 섹션 */}
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                줄거리
+              </Typography>
+              <Typography variant="body1" sx={{ lineHeight: 1.8, color: "#333" }}>
+                {book.plot}
+              </Typography>
             </Box>
-        </Container>
-    );
+          </Stack>
+        </Box>
+      </Box>
+    </Container>
+  );
 }

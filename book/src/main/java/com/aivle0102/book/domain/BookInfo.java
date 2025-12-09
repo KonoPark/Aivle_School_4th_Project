@@ -32,6 +32,8 @@ public class BookInfo {
     @Column
     private String author;
 
+    @Column(name = "cover_image_url", length = 2000)
+
     @Column
     private String category;
 

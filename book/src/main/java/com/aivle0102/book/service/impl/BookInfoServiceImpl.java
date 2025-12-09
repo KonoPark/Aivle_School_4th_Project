@@ -1,5 +1,9 @@
 package com.aivle0102.book.service.impl;
 
+import java.net.URL;
+import java.io.InputStream;
+import org.springframework.mock.web.MockMultipartFile;
+
 import com.aivle0102.book.domain.BookInfo;
 import com.aivle0102.book.domain.ImgInfo;
 import com.aivle0102.book.domain.UserInfo;
@@ -136,6 +140,59 @@ public class BookInfoServiceImpl implements BookInfoService {
         return bookInfoRepository.save(book);
     }
 
+    @Override
+        @Transactional
+        public BookInfo insertBookByUrl(BookInfo book, Long userId) throws IOException {
+
+            UserInfo user = userInfoRepository.findById(userId)
+                    .orElseThrow(() -> new RuntimeException("User Not Found"));
+
+            LocalDateTime now = LocalDateTime.now();
+            book.setUser(user);
+            book.setCreatedAt(now);
+            book.setUpdatedAt(now);
+
+            // 1) 우선 BookInfo만 저장하여 bookId 확보
+            BookInfo savedBook = bookInfoRepository.save(book);
+
+            // 2) 이미지 URL이 존재하면 다운로드 진행
+            if (book.getCoverImageUrl() != null && !book.getCoverImageUrl().isEmpty()) {
+
+                MultipartFile file = downloadImageAsMultipart(book.getCoverImageUrl());
+
+                // 서버에 이미지 저장
+                ImgInfo uploadedImg = uploadBookImage(savedBook.getBookId(), userId, file);
+
+                savedBook.setCoverImageUrl(uploadedImg.getImgUrl());
+                bookInfoRepository.save(savedBook);
+            }
+
+            return savedBook;
+        }
+
+
+        // -----------------------------
+        // URL → MultipartFile 변환
+        // -----------------------------
+        private MultipartFile downloadImageAsMultipart(String imageUrl) throws IOException {
+
+            URL url = new URL(imageUrl);
+
+            try (InputStream is = url.openStream()) {
+
+                byte[] bytes = is.readAllBytes();
+                String fileName = UUID.randomUUID().toString() + ".png";
+
+                return new MockMultipartFile(
+                        fileName, fileName,
+                        "image/png",
+                        bytes
+                );
+            }
+        }
+
+
+
 
     @Transactional
     public ImgInfo uploadBookImage(Long bookId, Long userId, MultipartFile file) throws IOException {
@@ -172,7 +229,7 @@ public class BookInfoServiceImpl implements BookInfoService {
         }
 
         // URL 저장
-        String imgUrl = "/book/" + imgName;
+        String imgUrl = "/uploads/" + imgName;
 
         LocalDateTime now = LocalDateTime.now();
 
